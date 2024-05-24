@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Gyan JS</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <h1>JS Function</h1>
+    <div class="container">
+      <div class="card" data-color="red"></div>
+      <div class="card" data-color="green"></div>
+      <div class="card" data-color="orange"></div>
+      <div class="card" data-color="blue"></div>
+      <div class="card" data-color="pink"></div>
+      <div class="card" data-color="blue"></div>
+      <div class="card" data-color="yellow"></div>
+      <div class="card" data-color="black"></div>
+    </div>
+    <div class="loginContainer">
+      <form action="">
+        <input id="userName" type="text" placeholder="User Name" />
+        <input id="password" type="password" placeholder="Password" />
+        <button id="loginButton">Login</button>
+      </form>
+      <div id="preview"></div>
+    </div>
+
+    <div class="container">
+      <h1>Multiplication Form</h1>
+      <input type="number" value="3" id="num1" />
+      X
+      <input type="number" value="2" id="num2" />
+      =
+      <span id="result">6</span>
+    </div>
+    <script src="index.js" async defer></script>
+    <script>
+      const cardsRef = document.querySelectorAll(".card");
+      cardsRef.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          //console.log(e.target.getAttribute('data-color'));
+          const getColorClass = e.target.dataset.color;
+          e.target.classList.add(getColorClass);
+        });
+      });
+
+      // const doubled = cardsRef.map(item => {
+      //     item.addEventListener('click', (e) => {
+      //     //console.log(e.target.getAttribute('data-color'));
+      //     const getColorClass = e.target.dataset.color;
+      //     e.target.classList.add(getColorClass);
+
+      //    })
+      // });
+
+      const userNameRef = document.getElementById("userName");
+      //const passwordRef = document.getElementById("password");
+
+      userNameRef.addEventListener('keyup', (e) => {
+        //console.log(e.target.value);
+      console.log(e.key);
+        if (e.key === 'Enter') {
+          //e.preventDefault();
+          const previewRef = document.getElementById("preview");
+          previewRef.innerText = e.target.value;
+        }
+      });
+
+      const userNameRef1 = document.getElementById('userName');    
+
+        userNameRef1.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const previewRef = document.getElementById('preview');
+            previewRef.innerText = e.target.value;
+        }
+        })
+
+        const loginButtonRef = document.getElementById('loginButton');
+
+        loginButtonRef.addEventListener('click', (e) => {
+
+          e.preventDefault();
+
+          const userName = userNameRef.value;
+          const passwordValue = passwordRef.value;
+
+          console.log({userName, passwordValue});
+          // console.log(passwordValue);
+
+          const loginContainerRef = document.querySelector('.loginContainer');
+          console.log(loginContainerRef);
+
+          const appendUserName = document.createElement('div');
+          appendUserName.innerText  = userName;
+
+          loginContainerRef.appendChild(appendUserName);
+
+        })
+
+        const numValue1 = document.getElementById('num1');
+        const numValue2 = document.getElementById('num2');
+        const resultRef = document.getElementById('result');
+
+        function calculateMultiply() {
+          const value1 = +numValue1.value;
+          const value2 = +numValue2.value;
+          const result = value1 + value2;
+          resultRef.innerText  = result;
+        }
+
+        numValue1.addEventListener('change', (e) => {
+         calculateMultiply()
+        })
+        numValue2.addEventListener('change', (e) => {
+          calculateMultiply()
+        })
+    </script>
+  </body>
+</html>

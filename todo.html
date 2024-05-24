@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Gyan JS</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      ul {
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JS Function - Todo App</h1>
+
+    <div>
+      <ul id="todoList"></ul>
+    </div>
+
+    <script>
+      // const todoListRef = document.getElementById("todoList");
+      // fetch("https://dummyjson.com/todos")
+      //     .then((res) => res.json())
+      //     .then((data) => {
+      //         const todos = data.todos;
+      //         todos.forEach((item) => {
+      //             const li = document.createElement("li");
+      //             li.innerHTML = item.todo;
+      //             todoListRef.appendChild(li);
+      //         });
+      //     })
+      //     .catch((error) => {
+      //         console.error('Error fetching todo data:', error);
+      //     });
+
+      function fatchTodo() {
+        fetch("https://dummyjson.com/todos")
+          .then((res) => res.json())
+          .then((data) => renderTodo(data))
+          .catch((error) => {
+            console.error("Error fetching todo data:", error);
+          });
+      }
+
+      function renderTodo(data) {
+        const todoArr = data.todos;
+        //console.log(todoArr);
+        const todoListRef = document.getElementById("todoList");
+
+        todoArr.forEach((item) => {
+          createTodo(todoListRef, item.todo, item.completed);
+          //  const li = document.createElement('li');
+          //  li.innerHTML = item.todo;
+          //  todoListRef.appendChild(li);
+
+          //  const checkboxRef = document.createElement('input');
+          //  checkboxRef.type =  'checkbox';
+          //  checkboxRef.checked =  item.completed;
+          //  li.prepend(checkboxRef);
+        });
+
+        removeListItem();
+
+        todoDone();
+      }
+      function createTodo(todoListRef, text, completed) {
+        const li = document.createElement("li");
+        li.innerHTML = text;
+        li.style.padding = "10px";
+        li.style.listStyle = "none";
+        li.style.cursor = "pointer";
+        li.style.textDecoration = completed ? "line-through" : "none";
+        todoListRef.appendChild(li);
+
+        const checkboxRef = document.createElement("input");
+        checkboxRef.type = "checkbox";
+        checkboxRef.className = "checkboxItem";
+        checkboxRef.checked = completed;
+        checkboxRef.style.marginRight = "10px";
+        li.prepend(checkboxRef);
+
+        const buttonRef = document.createElement("button");
+        buttonRef.innerHTML = "Remove";
+        buttonRef.style.fontSize = "10px";
+        buttonRef.style.marginLeft = "10px";
+        buttonRef.style.cursor = "pointer";
+        buttonRef.className = "removieBtn";
+        li.appendChild(buttonRef);
+      }
+
+      function removeListItem() {
+        const removeBtnRef = document.querySelectorAll(".removieBtn");
+        removeBtnRef.forEach((item) => {
+          item.addEventListener("click", (e) => {
+            e.target.parentElement.remove();
+          });
+        });
+      }
+
+      const todoDone = () => {
+        const list = document.querySelectorAll("li");
+        list.forEach((data) => {
+          data.addEventListener("click", (e) => {
+
+            e.target.parentElement.style.textDecoration = e.target.checked ? "line-through":  "none";
+            
+            // if (e.target.checked === true) {
+            //   e.target.parentElement.style.textDecoration = "line-through";           
+            // } else {
+            //   e.target.parentElement.style.textDecoration = "none";            
+            // }
+          });
+        });
+      };
+      fatchTodo();
+
+      // const  removeRef = document.querySelectorAll(".removieBtn");
+
+      // console.log(removeRef);
+
+      // removeRef.forEach((item) => {
+      //   console.log(item);
+      //   cardRef.addEventListener("dblclick", (e) => {
+      //     console.log(e.target.dataset.color);
+      //     const getColorRef = e.target.dataset.color;
+      //     e.target.classList.add(getColorRef);
+      //     e.target.dataset.color = "used";
+      //     console.log(e.target.dataset.color);
+      //   });
+      // });
+    </script>
+
+    <script src="index.js" async defer></script>
+  </body>
+</html>

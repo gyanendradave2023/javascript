@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Filter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        .roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+      /* Styles for the popup */
+      .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fdfdfd;
+    
+      border: 1px solid #ccc;
+      z-index: 9999;
+      width: 50%;
+      border-radius: 8px;
+      box-shadow: 0 1px 15px #b9b9b9;
+      }
+      /* Styles for form elements */
+      .popup label {
+      display: block;
+      }
+      .popup input[type="radio"],
+      .popup input[type="radio"] {
+      margin: 4px;
+      }
+      .popup select,
+      .popup input[type="radio"] {
+      }
+      .popup input[type="submit"] {
+      margin-top: 20px;
+      }
+      .d-flex {
+      display: flex;
+      gap: 1rem;
+      }
+      .alignCenter {
+      align-items: center;
+      }
+      .gap-2 {
+      gap: 0.25rem;
+      }
+      .itemContainer {
+    border-bottom: 1px solid #d3d3d3;
+    padding-bottom: 1.5rem;
+}
+
+
+    </style>
+  </head>
+  <body class="roboto-regular">
+    <!-- Button to open the popup -->
+    <button onclick="togglePopup()">Open Filter</button>
+    <!-- The popup -->
+    <div id="filterPopup" class="popup">
+        <div class="header" style="
+          padding: 0 1.5rem;
+          border-bottom: 1px solid #ccc;
+          ">
+          <h2>Filter Tasks</h2>
+        </div>
+        <div style="
+          padding: 0rem 2rem 2rem;
+          ">
+          <div class="itemContainer">
+            <h3>Brand</h3>
+          <div class="d-flex">
+            <div class="d-flex alignCenter gap-2">
+              <input type="radio" id="MER" name="brand" value="MER" checked="">
+              <label for="allPriority">MER</label>
+            </div>
+            <div class="d-flex alignCenter gap-2">
+              <input type="radio" id="KIA" name="brand" value="KIA" checked="">
+              <label for="allPriority">KIA</label>
+            </div>
+            <div class="d-flex alignCenter gap-2">
+              <input type="radio" id="PEU" name="brand" value="PEU">
+              <label for="highPriority">PEU</label>
+            </div>
+            <div class="d-flex alignCenter">
+              <input type="radio" id="BMW" name="brand" value="BMW">
+              <label for="mediumPriority">BMW</label>
+            </div>
+            <div class="d-flex alignCenter gap-2">
+              <input type="radio" id="ALFA" name="brand" value="ALFA">
+              <label for="lowPriority">ALFA</label>
+            </div>
+          </div>
+          </div>
+          
+          <div class="itemContainer">
+            <h3>Car type</h3>
+            <div class="d-flex">
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="all" name="all">
+                <label for="all">All</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="Personbil" name="Personbil">
+                <label for="Personbil">Personbil</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="Varebil" name="Varebil">
+                <label for="Varebil">Varebil</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="Bus" name="Bus">
+                <label for="Bus">Bus</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="Car" name="Car">
+                <label for="Car">Car</label>
+              </div>
+            </div>
+          </div>
+          <div class="itemContainer">
+            <h3>Model familly</h3>
+            <div class="d-flex">
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="AKlasse" name="AKlasse">
+                <label for="AKlasse">A klasse</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="AMG_GT" name="AMG_GT">
+                <label for="AMG_GT">AMG GT</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="Actors" name="Actors">
+                <label for="Actors">Actors</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="Atego" name="Atego">
+                <label for="Atego">Atego</label>
+              </div>
+            </div>
+          </div>
+          <div class="itemContainer">
+            <h3>Group</h3>
+            <div class="d-flex">
+              <div class="d-flex alignCenter gap-2">
+                <input type="radio" id="allPriority" name="group" value="Styling" checked="">
+                <label for="allPriority">Styling</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="radio" id="Interior" name="group" value="Interior" checked="">
+                <label for="Interior">Interior</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="radio" id="Sikkerhe" name="group" value="Sikkerhe">
+                <label for="Sikkerhe">Sikkerhe</label>
+              </div>
+            </div>
+          </div>
+          <div class="itemContainer">
+            <h3>SKU</h3>
+            <div class="d-flex">
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="sku0" name="sku0">
+                <label for="sku0">!=[%end%], </label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="sku1" name="sku1">
+                <label for="sku1">!=[EQA250 803]</label>
+              </div>
+            </div>
+          </div>
+          <div class="itemContainer">
+            <h3>Package Tags</h3>
+            <div class="d-flex">
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="Auto" name="Auto">
+                <label for="Auto">Auto</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="MostSold" name="MostSold">
+                <label for="MostSold">Most sold</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="checkbox" id="WinterDeal" name="WinterDeal">
+                <label for="WinterDeal">Winter deal</label>
+              </div>
+            </div>
+          </div>
+          <div class="itemContainer">
+            <h3>Part Manufacturer</h3>
+            <div class="d-flex">
+              <div class="d-flex alignCenter gap-2">
+                <input type="radio" id="ALF" name="PartManufacturer" value="ALF" checked="">
+                <label for="ALF">ALF</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="radio" id="CIT" name="PartManufacturer" value="CIT" checked="">
+                <label for="CIT">CIT</label>
+              </div>
+              <div class="d-flex alignCenter gap-2">
+                <input type="radio" id="MER" name="PartManufacturer" value="MER">
+                <label for="MER">MER</label>
+              </div>
+              <div class="d-flex alignCenter">
+                <input type="radio" id="PEU" name="PartManufacturer" value="PEU">
+                <label for="PEU">PEU</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Function to toggle the visibility of the popup
+      function togglePopup() {
+        var popup = document.getElementById("filterPopup");
+        if (popup.style.display === "none") {
+          popup.style.display = "block";
+        } else {
+          popup.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>

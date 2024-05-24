@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Gyan JS</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <h1>JS Function</h1>
+    <!-- <div class="loginContainer">
+        <input id="userName" type="text" placeholder="User Name" />      
+        <div id="preview"></div>
+    </div> -->
+    <div class="loginContainer">     
+        <input id="userName" type="text" placeholder="User Name" /> 
+        <div id="preview"></div>
+    </div>
+    
+    <!-- <script>
+        const userNameRef1 = document.getElementById('userName');
+    
+        userNameRef1.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const previewRef = document.getElementById('preview');
+                previewRef.innerText = e.target.value;
+            }
+        });
+    </script> -->
+   
+   
+
+   
+    
+    <script>
+     const userNameRef1 = document.getElementById('userName');    
+
+     userNameRef1.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            // e.preventDefault();
+            const previewRef = document.getElementById('preview');
+            previewRef.innerText = e.target.value;
+        }
+     })
+    </script> 
+    <script src="index.js" async defer></script>
+  </body>
+</html>

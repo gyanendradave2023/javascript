@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Gyan JS</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
+    *{box-sizing: border-box;}
+    .mainContainer{width: 100%; max-width: 1024px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+    .container{display: flex; flex-wrap: wrap; justify-content: space-around; padding-top: 5rem;}
+    .price{background-color: rgb(190, 5, 5); height: 8rem; padding: 1.5rem; font-size: 2rem;}
+    .heading{background-color: black; height: 2rem;}
+    .price, .heading{color: #fff; text-align: center; margin: 0;}
+    #category{width: 8rem;}
+
+  </style>
+  <body>
+   
+
+   
+   <div class="mainContainer">
+         
+    <h1>JS Function Filter</h1>
+    <select id="category">
+        <option value="all">All</option>
+        <option value="romance">Romance</option>
+        <option value="drama">Drama</option>
+        <option value="action">Action</option>
+    </select>
+
+    <div class="container">
+        <div class="movies">
+            <h3 class="heading">Drama Movie - 1</h3>
+            <p class="price" data-category="drama">Rs. 200</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Drama Movie - 1</h3>
+            <p class="price" data-category="drama">Rs. 200</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action Movie - 1</h3>
+            <p class="price" data-category="action">Rs. 100</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance Movie - 1</h3>
+            <p class="price" data-category="romance">Rs. 150</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Drama Movie - 1</h3>
+            <p class="price" data-category="drama">Rs. 200</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action Movie - 2</h3>
+            <p class="price" data-category="action">Rs. 100</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action Movie - 2</h3>
+            <p class="price" data-category="action">Rs. 100</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance Movie - 2</h3>
+            <p class="price" data-category="romance">Rs. 150</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Drama Movie - 2</h3>
+            <p class="price" data-category="drama">Rs. 200</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action Movie - 3</h3>
+            <p class="price" data-category="action">Rs. 100</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance Movie - 3</h3>
+            <p class="price" data-category="romance">Rs. 150</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Drama Movie - 3</h3>
+            <p class="price" data-category="drama">Rs. 200</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action Movie - 2</h3>
+            <p class="price" data-category="action">Rs. 100</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance Movie - 2</h3>
+            <p class="price" data-category="romance">Rs. 150</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Drama Movie - 2</h3>
+            <p class="price" data-category="drama">Rs. 200</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action Movie - 3</h3>
+            <p class="price" data-category="action">Rs. 100</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action Movie - 1</h3>
+            <p class="price" data-category="action">Rs. 100</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance Movie - 1</h3>
+            <p class="price" data-category="romance">Rs. 150</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Drama Movie - 1</h3>
+            <p class="price" data-category="drama">Rs. 200</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action Movie - 2</h3>
+            <p class="price" data-category="action">Rs. 100</p>
+        </div>
+       
+       
+    </div>
+
+   </div>
+
+   
+    <script>
+
+        const categoryRef = document.querySelector('#category');        
+
+        categoryRef.addEventListener('change', function(e){
+          const selectedCategory = e.target.value;
+            filterCard(selectedCategory);
+        });
+
+        function filterCard(selectedCategory){
+            const moviesRef = document.querySelectorAll('.movies');    
+            moviesRef.forEach(movie => {              
+                const priceRef = movie.querySelector('.price');
+                const movieCategory = priceRef.dataset.category;
+
+                if(movieCategory === selectedCategory || selectedCategory === 'all'){
+                    movie.style.display = 'block';
+                } else {
+                    movie.style.display = 'none';
+                }
+               
+            })
+        }
+
+
+        
+    </script>
+
+    <script src="index.js" async defer></script>
+  </body>
+</html>
